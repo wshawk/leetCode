@@ -35,19 +35,17 @@ public class MergeTwoBinaryTrees {
         TreeNode tree1 = getTree1();
         TreeNode tree2 = getTree2();
 
-        TreeNode mergeTree = mergeTree(tree1, tree2);
+        TreeNode mergeTree = mergeTrees(tree1, tree2);
         // 预期输出结果：3 4 5 4 5 7
         TreeNodeUtils.preOrder(mergeTree);
     }
 
-    private static TreeNode mergeTree(TreeNode t1, TreeNode t2) {
+    private static TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null){
             return null;
         }
         if (t1 != null && t2 != null){
-            t1.setVal(t1.val + t2.val);
-            t1.setLeft(mergeTree(t1.left, t2.left));
-            t1.setRight(mergeTree(t1.right, t2.right));
+            t1 = new TreeNode(t1.val + t2.val, mergeTrees(t1.left, t2.left), mergeTrees(t1.right, t2.right));
         }
         if (t1 == null && t2 != null){
             t1 = t2;
