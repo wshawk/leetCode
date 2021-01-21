@@ -34,7 +34,7 @@ public class InvertBinaryTree {
         // postOrder(temp.getTree());
 
         TreeNode node = temp.invertTree(temp.getTree());
-        preOrder(node);
+        TreeNodeUtils.preOrder(node);
 
     }
     public TreeNode getTree(){
@@ -49,38 +49,6 @@ public class InvertBinaryTree {
         return new TreeNode(4, leftChild, rightChild);
     }
 
-    // 二叉树的前序遍历
-    public static void preOrder(TreeNode root){
-        if (root != null){
-            System.out.print(root.val + " ");
-            preOrder(root.left);
-            preOrder(root.right);
-        }else{
-            return;
-        }
-    }
-
-    // 二叉树的中序遍历
-    public static void middleOrder(TreeNode root){
-        if (root != null){
-            middleOrder(root.left);
-            System.out.print(root.val + " ");
-            middleOrder(root.right);
-        }else{
-            return;
-        }
-    }
-
-    // 二叉树的后序遍历
-    public static void postOrder(TreeNode root){
-        if (root != null){
-            postOrder(root.left);
-            postOrder(root.right);
-            System.out.print(root.val + " ");
-        }else{
-            return;
-        }
-    }
     // 二叉树的翻转
     public TreeNode invertTree(TreeNode root) {
         if (root != null){
