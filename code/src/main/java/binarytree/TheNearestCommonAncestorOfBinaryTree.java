@@ -1,5 +1,8 @@
 package binarytree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author hawk
  * @package binarytree
@@ -35,5 +38,56 @@ package binarytree;
  * @date 2021/1/22
  */
 public class TheNearestCommonAncestorOfBinaryTree {
+    public static void main(String[] args) {
+        /*
+             Tree 1                     Tree 2
+            *   1                         2
+            *  / \                       / \
+            * 3   2                     1   3
+            * /                          \   \
+            * 5                           4   7
 
+ */
+        TreeNode node = MergeTwoBinaryTrees.getTree1();
+        lowestCommonAncestor(node, null, null);
+    }
+
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        /*
+        初步思路：
+            1. 确定p、q在root中的位置
+            2. 向上遍历
+            3. 找到相同的节点，返回该节点
+        优化想法：
+            1. 遍历root的节点，存到节点数组中，每一个元素都是一棵树
+            2. 找到p、q节点在数组中的位置i、j
+            3. 以索引比较小的那个截断
+            4. 向前遍历即可
+         */
+        List<TreeNode> list = new ArrayList<>();
+        preorder(root, list);
+        int index = Math.min(list.indexOf(p), list.indexOf(q));
+        // 向前遍历每一棵树
+        // 有p、q节点值的那棵树就是要返回的树
+        TreeNode result = null;
+        for (int i=index; i > -1; i--){
+            if (containsNode(list.get(i),p,q)){
+                result = list.get(i);
+            }
+        }
+        return result;
+    }
+
+    private static boolean containsNode(TreeNode treeNode, TreeNode p, TreeNode q) {
+        return false;
+    }
+
+    public static void preorder(TreeNode node, List<TreeNode> list){
+        if (node == null){
+            return ;
+        }
+        list.add(node);
+        preorder(node.left, list);
+        preorder(node.right, list);
+    }
 }

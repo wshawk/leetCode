@@ -61,7 +61,7 @@ public class MergeTwoBinaryTrees {
             * 5                           4   7
 
  */
-    private static TreeNode getTree2() {
+public static TreeNode getTree2() {
         TreeNode root = new TreeNode(2);
         TreeNode leftChild = new TreeNode(1);
         TreeNode leftChildChild = new TreeNode(4);
@@ -76,7 +76,7 @@ public class MergeTwoBinaryTrees {
         return root;
     }
 
-    private static TreeNode getTree1() {
+    public static TreeNode getTree1() {
         TreeNode root = new TreeNode(1);
         TreeNode leftChild = new TreeNode(3);
         TreeNode leftChildChild = new TreeNode(5);
