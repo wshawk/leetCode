@@ -2,8 +2,9 @@ package binarytree;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author hawk
@@ -14,7 +15,7 @@ import java.util.List;
 public class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
         TreeNode node = MergeTwoBinaryTrees.getTree1();
-        levelOrder(node);
+        levelOrderLeetCode(node);
     }
     public static List<List<Integer>> levelOrder(TreeNode root) {
         List<TreeNode> list = new ArrayList<>();
@@ -45,5 +46,35 @@ public class BinaryTreeLevelOrderTraversal {
         if (next.size() > 0){
             listTree(next, result);
         }
+    }
+
+    /**
+     * 官方题解
+     * @param root
+     * @return
+     */
+    public static List<List<Integer>> levelOrderLeetCode(TreeNode root) {
+        List<List<Integer>> ret = new ArrayList<>();
+        if (root == null) {
+            return ret;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int currentLevelSize = queue.size();
+            for (int i = 1; i <= currentLevelSize; ++i) {
+                TreeNode node = queue.poll();
+                level.add(node.val);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            ret.add(level);
+        }
+        return ret;
     }
 }
