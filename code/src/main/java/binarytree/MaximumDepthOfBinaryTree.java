@@ -45,7 +45,7 @@ public class MaximumDepthOfBinaryTree {
         if (root.right != null){
             rightDepth++;
         }
-        if (root != null && root.left == null && root.right == null){
+        if (root.left == null && root.right == null){
             return 1;
         }
         return getNodeDepth(root, leftDepth, rightDepth);
@@ -68,6 +68,12 @@ public class MaximumDepthOfBinaryTree {
 
         return Math.max(leftDepth, rightDepth);
     }
+
+    /**
+     * 正解
+     * @param root
+     * @return
+     */
     public static int getNodeDepth(TreeNode root) {
         if (root == null ) {
             return 0;
