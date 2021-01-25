@@ -49,7 +49,11 @@ public class TheNearestCommonAncestorOfBinaryTree {
 
  */
         TreeNode node = MergeTwoBinaryTrees.getTree1();
-        lowestCommonAncestor(node, null, null);
+
+        TreeNode p = new TreeNode(2);
+        TreeNode q = new TreeNode(3);
+
+        System.out.println(lowestCommonAncestor(node, p, q).val);
     }
 
     public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
@@ -66,20 +70,34 @@ public class TheNearestCommonAncestorOfBinaryTree {
          */
         List<TreeNode> list = new ArrayList<>();
         preorder(root, list);
-        int index = Math.min(list.indexOf(p), list.indexOf(q));
+        int pIndex = list.stream().filter(x->x.val==p.val).mapToInt(y -> list.indexOf(y)).sum();
+        int qIndex = list.stream().filter(x->x.val==q.val).mapToInt(y -> list.indexOf(y)).sum();
+        int index = Math.min(pIndex, qIndex);
         // 向前遍历每一棵树
         // 有p、q节点值的那棵树就是要返回的树
         TreeNode result = null;
         for (int i=index; i > -1; i--){
             if (containsNode(list.get(i),p,q)){
                 result = list.get(i);
+                break;
             }
         }
         return result;
     }
 
     private static boolean containsNode(TreeNode treeNode, TreeNode p, TreeNode q) {
-        return false;
+        if (q == null || p == null){
+            return false;
+        }
+        return containsNode(treeNode, p) && containsNode(treeNode, q);
+    }
+
+    private static boolean containsNode(TreeNode treeNode, TreeNode p){
+        if (treeNode == null){
+            return false;
+        }
+
+        return treeNode.val==p.val || containsNode(treeNode.left, p) || containsNode(treeNode.right, p);
     }
 
     public static void preorder(TreeNode node, List<TreeNode> list){
