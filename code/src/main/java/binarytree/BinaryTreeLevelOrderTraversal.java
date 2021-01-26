@@ -54,26 +54,26 @@ public class BinaryTreeLevelOrderTraversal {
      * @return
      */
     public static List<List<Integer>> levelOrderLeetCode(TreeNode root) {
-        List<List<Integer>> ret = new ArrayList<>();
-        if (root == null) {
+        List<List<Integer>> ret = new ArrayList<List<Integer>>();
+        if(root == null){
             return ret;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        while (!queue.isEmpty()) {
-            List<Integer> level = new ArrayList<>();
-            int currentLevelSize = queue.size();
-            for (int i = 1; i <= currentLevelSize; ++i) {
+
+        while(!queue.isEmpty()){
+            List<Integer> levelList = new ArrayList<>();
+            for (int i=0, currentLevelSize = queue.size(); i< currentLevelSize; i++){
                 TreeNode node = queue.poll();
-                level.add(node.val);
-                if (node.left != null) {
+                levelList.add(node.val);
+                if (node.left != null){
                     queue.offer(node.left);
                 }
-                if (node.right != null) {
+                if (node.right != null){
                     queue.offer(node.right);
                 }
             }
-            ret.add(level);
+            ret.add(levelList);
         }
         return ret;
     }
