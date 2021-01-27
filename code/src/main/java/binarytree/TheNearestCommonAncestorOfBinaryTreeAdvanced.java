@@ -120,7 +120,6 @@ public class TheNearestCommonAncestorOfBinaryTreeAdvanced {
     }
 
 
-
     public static void main(String[] args) throws Exception{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String[] strs = bf.readLine().split(" ");
@@ -165,5 +164,49 @@ public class TheNearestCommonAncestorOfBinaryTreeAdvanced {
         }
         System.out.println(sb.toString().trim());
     }
+    // public static void main(String[] args) throws Exception{
+    //     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+    //     String[] strs = bf.readLine().split(" ");
+    //     int n = Integer.parseInt(strs[0]);
+    //     int rootVal = Integer.parseInt(strs[1]);
+    //
+    //     Node[] nodes = new Node[n + 1];
+    //     for(int i = 0; i < n; i++) {
+    //         strs = bf.readLine().split(" ");
+    //         int f = Integer.parseInt(strs[0]);
+    //         int l = Integer.parseInt(strs[1]);
+    //         int r = Integer.parseInt(strs[2]);
+    //
+    //         if(nodes[f] == null) {
+    //             nodes[f] = new Node(f);
+    //         }
+    //         if(nodes[l] == null) {
+    //             nodes[l] = new Node(l);
+    //         }
+    //         if(nodes[r] == null) {
+    //             nodes[r] = new Node(r);
+    //         }
+    //
+    //         nodes[f].left = nodes[l];
+    //         nodes[f].right = nodes[r];
+    //
+    //         nodes[l].parent = nodes[f];
+    //         nodes[r].parent = nodes[f];
+    //     }
+    //
+    //     getLevel(nodes);
+    //
+    //     StringBuilder sb = new StringBuilder();
+    //     int q = Integer.parseInt(bf.readLine());
+    //     while(q-- > 0) {
+    //         strs = bf.readLine().split(" ");
+    //         int node1 = Integer.parseInt(strs[0]);
+    //         int node2 = Integer.parseInt(strs[1]);
+    //
+    //         sb.append(solution(nodes, nodes[node1], nodes[node2]));
+    //         sb.append("\n");
+    //     }
+    //     System.out.println(sb.toString().trim());
+    // }
 
 }
