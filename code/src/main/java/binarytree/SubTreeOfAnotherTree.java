@@ -4,10 +4,13 @@ import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 /**
  * @author hawk
@@ -52,8 +55,8 @@ import java.util.TreeMap;
  */
 public class SubTreeOfAnotherTree {
     public static void main(String[] args) {
-        TreeNode s = TreeNodeUtils.generateBinaryTree(new Integer[]{94, 95, 95, 94, 96, 94, 96, 95, 95, 95, 97, 93, null, null, 95, 94, 96, 94, null, 94, 96, 96, 98, null, null, null, null, 93, 93, 95, 95, 93, 95, 93, 95, 97, 97, null, 95, 97, 97, 92, 92, 92, 94, null, 96, 96, 96, 92, 92, 96, 96, 92, null, null, 96, 98, 98, 98, null, null, null, 96, 98, null, null, null, 93, 91, 93, null, 93, 93, 93, null, 97, 95, 95, 97, 97, null, 93, 91, null, 95, 97, 95, 97, 91, null, null, null, 97, 99, null, 99, null, 99, 95, null, 97, 97, 92, 92, 90, null, 92, 94, 92, 92, 94, 92, 94, 94, null, null, 94, null, null, null, 96, null, 98, null, null, null, null, 92, 96, 94, null, 98, 94, null, 98, null, 90, null, null, null, 98, null, null, null, null, null, 94, null, 96, 96, 98, null, null, null, null, 91, null, 91, null, 93, null, 95, null, 93, null, null, 95, null, null, null, null, null, null, null, null, null, 95, 97, 97, 99, 91, 93, null, null, 93, 95, 97, 97, null, null, 97, 99, null, null, null, null, null, null, null, 97, null, 97, 97, null, 90, 90, null, 92, null, null, null, null, 94, 94, null, null, null, null, 98, 96, null, null, null, 98, null, 90, null, null, 92, 92, null, 96, null, null, null, null, null, null, 100, null, null, null, null, null, null, null, null, null, null, null, 91, null, null, null, null, 95, null, 99, 97, 97, null, null, null, null, 93, 91, 93, null, 95, null, null, null, null, null, null, null, null, 98, null, null, 96, null, null, null, 90, null, 92, null, null, null, null, null, null, null, 89});
-        TreeNode t = TreeNodeUtils.generateBinaryTree(new Integer[]{92});
+        TreeNode s = TreeNodeUtils.generateBinaryTree(new Integer[]{29,28,30,27,29,29,31,26,26,28,28,28,28,30,32,25,25,25,25,27,29,null,29,29,29,null,29,29,29,31,null,26,24,26,26,26,null,24,null,null,26,28,null,28,28,30,28,30,30,null,null,30,30,30,30,null,32,27,27,null,25,25,null,null,25,27,27,null,null,null,null,27,27,27,29,null,null,null,31,29,null,31,null,29,29,null,null,29,31,null,29,29,31,null,31,null,null,null,28,24,24,24,26,24,24,null,28,26,28,26,null,null,null,28,28,null,28,null,null,28,30,32,null,30,28,28,28,null,null,null,null,28,30,28,28,null,null,null,null,27,null,null,null,23,25,null,null,null,null,null,null,null,null,27,27,null,null,null,29,null,null,null,null,27,29,null,27,27,null,null,null,null,31,29,29,27,29,null,29,27,29,null,null,null,null,27,null,null,29,null,null,22,22,null,26,null,null,26,28,28,28,null,28,null,28,null,28,null,null,null,null,null,null,null,28,null,28,28,null,30,null,null,null,null,null,26,null,28,30,21,23,null,null,null,25,null,27,null,null,null,null,27,29,27,29,27,27,null,null,null,null,29,null,27,null,null,null,25,27,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,28,null,null,null,null,null,null,null,null,26,null,null,24,null,28,null,null,null,null,null,23});
+        TreeNode t = TreeNodeUtils.generateBinaryTree(new Integer[]{29});
 
         // s = [1,1,1]
         // t =  [1]
@@ -70,9 +73,22 @@ public class SubTreeOfAnotherTree {
         // s = [3,4,5,1,2]
         // t = [4,1,2,1]
 
+        // s = [94, 95, 95, 94, 96, 94, 96, 95, 95, 95, 97, 93, null, null, 95, 94, 96, 94, null, 94, 96, 96, 98, null, null, null, null, 93, 93, 95, 95, 93, 95, 93, 95, 97, 97, null, 95, 97, 97, 92, 92, 92, 94, null, 96, 96, 96, 92, 92, 96, 96, 92, null, null, 96, 98, 98, 98, null, null, null, 96, 98, null, null, null, 93, 91, 93, null, 93, 93, 93, null, 97, 95, 95, 97, 97, null, 93, 91, null, 95, 97, 95, 97, 91, null, null, null, 97, 99, null, 99, null, 99, 95, null, 97, 97, 92, 92, 90, null, 92, 94, 92, 92, 94, 92, 94, 94, null, null, 94, null, null, null, 96, null, 98, null, null, null, null, 92, 96, 94, null, 98, 94, null, 98, null, 90, null, null, null, 98, null, null, null, null, null, 94, null, 96, 96, 98, null, null, null, null, 91, null, 91, null, 93, null, 95, null, 93, null, null, 95, null, null, null, null, null, null, null, null, null, 95, 97, 97, 99, 91, 93, null, null, 93, 95, 97, 97, null, null, 97, 99, null, null, null, null, null, null, null, 97, null, 97, 97, null, 90, 90, null, 92, null, null, null, null, 94, 94, null, null, null, null, 98, 96, null, null, null, 98, null, 90, null, null, 92, 92, null, 96, null, null, null, null, null, null, 100, null, null, null, null, null, null, null, null, null, null, null, 91, null, null, null, null, 95, null, 99, 97, 97, null, null, null, null, 93, 91, 93, null, 95, null, null, null, null, null, null, null, null, 98, null, null, 96, null, null, null, 90, null, 92, null, null, null, null, null, null, null, 89]
+        // t = [92]
+        // 预期：false 通过
+
+        // s = [29,28,30,27,29,29,31,26,26,28,28,28,28,30,32,25,25,25,25,27,29,null,29,29,29,null,29,29,29,31,null,26,24,26,26,26,null,24,null,null,26,28,null,28,28,30,28,30,30,null,null,30,30,30,30,null,32,27,27,null,25,25,null,null,25,27,27,null,null,null,null,27,27,27,29,null,null,null,31,29,null,31,null,29,29,null,null,29,31,null,29,29,31,null,31,null,null,null,28,24,24,24,26,24,24,null,28,26,28,26,null,null,null,28,28,null,28,null,null,28,30,32,null,30,28,28,28,null,null,null,null,28,30,28,28,null,null,null,null,27,null,null,null,23,25,null,null,null,null,null,null,null,null,27,27,null,null,null,29,null,null,null,null,27,29,null,27,27,null,null,null,null,31,29,29,27,29,null,29,27,29,null,null,null,null,27,null,null,29,null,null,22,22,null,26,null,null,26,28,28,28,null,28,null,28,null,28,null,null,null,null,null,null,null,28,null,28,28,null,30,null,null,null,null,null,26,null,28,30,21,23,null,null,null,25,null,27,null,null,null,null,27,29,27,29,27,27,null,null,null,null,29,null,27,null,null,null,25,27,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,28,null,null,null,null,null,null,null,null,26,null,null,24,null,28,null,null,null,null,null,23]
+        // t = [29]
+        // 预期：true
         System.out.println(isSubtree(s, t));
     }
 
+    /**
+     * 自己的题解，第九次执行的时候，终于通过了.....
+     * @param s
+     * @param t
+     * @return
+     */
     public static boolean isSubtree(TreeNode s, TreeNode t) {
         // 前序遍历t，存储到list中, List<Integer>
         // 前序遍历s，把s的每一个子树遍历的结果放到list中即List<List<Integer>>
@@ -80,39 +96,53 @@ public class SubTreeOfAnotherTree {
         List<Integer> tList = new ArrayList<>();
         preOrder(t, tList);
 
-        List<List<Integer>> sList = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(s);
-        while (!queue.isEmpty()) {
-            TreeNode cur = queue.poll();
+        // 获取s的所有子树
+        List<TreeNode> childs = new ArrayList<>();
+        setAllSubTree(s, childs);
+        List<List<Integer>> preOrederList = new ArrayList<>();
+        childs.forEach(x -> {
             List<Integer> list = new ArrayList<>();
-            preOrder(cur, list);
-            sList.add(list);
-            if (cur.left != null) {
-                queue.offer(cur.left);
-            }
-            if (cur.right != null) {
-                queue.offer(cur.right);
-            }
-        }
-        boolean flag = true;
-        for (List<Integer> integers : sList) {
-            if (integers.size() == tList.size()) {
-                for (int i = 0, len = tList.size(); i < len; i++) {
-                    if (!integers.get(i).equals(tList.get(i))) {
-                        flag = false;
+            preOrder(x, list);
+            preOrederList.add(list);
+        });
+        boolean flag = false;
+        for (List<Integer> integers: preOrederList){
+            Set<Boolean> set = new HashSet<>();
+            if (integers.size() == tList.size()){
+                for (int i=0,len=tList.size(); i<len; i++){
+                    if (!tList.get(i).equals(integers.get(i))){
+                       set.add(false);
+                    }else{
+                       set.add(true);
                     }
                 }
-                if (flag) {
-                    return true;
-                }
+            }
+            if (set.size() == 1 && set.contains(true)){
+                flag = true;
+            }
+            if (flag){
+                return true;
             }
         }
-        return false;
+    return false;
+    }
+
+    private static void setAllSubTree(TreeNode s, List<TreeNode> list) {
+        if (s == null) {
+            return;
+        }
+        list.add(s);
+        if (s.left != null) {
+            setAllSubTree(s.left, list);
+        }
+        if (s.right != null) {
+            setAllSubTree(s.right, list);
+        }
     }
 
     public static void preOrder(TreeNode node, List<Integer> list) {
         if (node == null) {
+            list.add(-1);
             return;
         }
         list.add(node.val);
