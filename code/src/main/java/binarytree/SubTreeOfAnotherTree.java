@@ -85,6 +85,8 @@ public class SubTreeOfAnotherTree {
 
     /**
      * 自己的题解，第九次执行的时候，终于通过了.....
+     * 运行时间： 72ms
+     * 内存消耗： 67.5MB
      * @param s
      * @param t
      * @return
@@ -153,7 +155,8 @@ public class SubTreeOfAnotherTree {
 
     /**
      * 官方题解DFS
-     *
+     * 运行时间：7ms
+     * 内存消耗：38.2MB
      * @param s
      * @param t
      * @return
@@ -178,4 +181,30 @@ public class SubTreeOfAnotherTree {
         }
         return check(s.left, t.left) && check(s.right, t.right);
     }
+
+    /**
+     * 网上参考版
+     * 运行时间：7ms
+     * 内存消耗： 38.7MB
+     * @param p
+     * @param q
+     * @return
+     */
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if (p == null && q == null){
+            return true;
+        }
+        if (p == null || q == null || p.val != q.val){
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+
+    public boolean isSubtreeBetter(TreeNode s, TreeNode t) {
+        if (s == null){
+            return false;
+        }
+        return isSameTree(s, t) || isSubtreeBetter(s.right, t) || isSubtreeBetter(s.left, t);
+    }
+
 }
