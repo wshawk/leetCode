@@ -128,7 +128,7 @@ public class SubTreeOfAnotherTree {
      * @param t
      * @return
      */
-    public boolean isSubtree_leetcode(TreeNode s, TreeNode t) {
+    public boolean isSubtreeLeetcode(TreeNode s, TreeNode t) {
         return dfs(s, t);
     }
 
