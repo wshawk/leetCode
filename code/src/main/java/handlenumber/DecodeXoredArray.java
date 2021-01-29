@@ -30,10 +30,24 @@ package handlenumber;
  * 0 <= encoded[i] <= 105
  * 0 <= first <= 105
  *
+ * 【a^b = c ， a^b^b = a， 即 c^b=a 同理 c^a =b】
+ *
  * @date 2021/1/29
  */
 public class DecodeXoredArray {
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：39.3 MB, 在所有 Java 提交中击败了80.53%的用户
+     * @param encoded
+     * @param first
+     * @return
+     */
     public int[] decode(int[] encoded, int first) {
-        return null;
+        int[] decodedArray = new int[encoded.length+1];
+        decodedArray[0] = first;
+        for (int i=0; i<encoded.length; i++){
+            decodedArray[i+1] = encoded[0] ^ decodedArray[i];
+        }
+        return decodedArray;
     }
 }
