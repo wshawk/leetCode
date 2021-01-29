@@ -152,4 +152,39 @@ public class CountTheNumberOfConsistentStrings {
         }
         return ans;
     }
+
+    /**
+     * 执行用时：6 ms, 在所有 Java 提交中击败了99.18%的用户
+     * 内存消耗：39.2 MB, 在所有 Java 提交中击败了68.79%的用户
+     *
+     * 别人的题解3。。。提升1ms
+     * @param allowed
+     * @param words
+     * @return
+     */
+    public int countConsistentStringsByOtherPerson3(String allowed, String[] words) {
+        int result = 0;
+        //使用一个数组记录allowed 包含的字符，数组定位，效率较高
+        int[] allow = new int[26];
+        char[] chars = allowed.toCharArray();
+        for (char aChar : chars) {
+            allow[aChar - 'a'] = 1;
+        }
+        for (String word : words) {
+            char[] arr = word.toCharArray();
+            int index = 0;
+            int length = arr.length;
+            for (; index < length; index++) {
+                //如果这个字符没有在allowed 中，直接结束
+                if (allow[arr[index] - 'a'] == 0) {
+                    break;
+                }
+            }
+            //如果相等说明这个字符有判断到最后，结果加1
+            if (index == length) {
+                result++;
+            }
+        }
+        return result;
+    }
 }
