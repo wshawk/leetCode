@@ -73,5 +73,20 @@ public class RunningSumOf1dArray {
         return result;
     }
 
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：38.8 MB, 在所有 Java 提交中击败了14.93%的用户
+     * @param nums
+     * @return
+     */
+    public int[] runningSumV2(int[] nums) {
+        if (nums.length < 2) {
+            return nums;
+        }
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] += nums[i - 1];
+        }
+        return nums;
+    }
 
 }
