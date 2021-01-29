@@ -187,4 +187,36 @@ public class CountTheNumberOfConsistentStrings {
         }
         return result;
     }
+
+    /**
+     * 执行用时：5 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：39.3 MB, 在所有 Java 提交中击败了47.32%的用户
+     *
+     * 别人的题解4。。。再次提升1ms，100.00%
+     * @param allowed
+     * @param words
+     * @return
+     */
+    public int countConsistentStringsByOtherPerson4(String allowed, String[] words) {
+        int[] temp = new int[26];
+        char[] arry = allowed.toCharArray();
+        for (int i = 0; i < allowed.length(); i++) {
+            // 通过临时变量数组，将数组内的所有值，都置为1
+            temp[arry[i] - 'a'] = 1;
+        }
+        // 统计最多有words数组个匹配的
+        int count = words.length;
+        for (String s : words) {
+            int len = s.length();
+            for (int i = 0; i < len; i++) {
+                // 如果要比较的字符串通过上面计算，不等于1，则表示不匹配
+                if (temp[s.charAt(i) - 'a'] != 1) {
+                    // 不匹配则减1，然后当前不需要再继续判断，跳出第二层循环
+                    count--;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
 }
