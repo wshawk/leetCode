@@ -122,4 +122,34 @@ public class CountTheNumberOfConsistentStrings {
         }
         return result;
     }
+
+    /**
+     * 执行用时：7 ms, 在所有 Java 提交中击败了92.33%的用户
+     * 内存消耗：39.2 MB, 在所有 Java 提交中击败了60.44%的用户
+     *
+     * 别人的题解2。。。质的提升、飞跃
+     * @param allowed
+     * @param words
+     * @return
+     */
+    public int countConsistentStringsByOtherPerson2(String allowed, String[] words) {
+        int ans = solve(allowed);
+        int total = 0;
+        for (String word : words) {
+            int res = solve(word);
+            if((res & ans) == res){
+                total ++;
+            }
+        }
+        return total;
+    }
+
+    public int solve(String s) {
+        int ans = 0;
+        for(int i = 0; i < s.length(); i++) {
+            int x = s.charAt(i) - 'a';
+            ans |= (1 << x);
+        }
+        return ans;
+    }
 }
