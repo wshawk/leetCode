@@ -80,4 +80,24 @@ public class CountTheNumberOfConsistentStrings {
             return allowset.containsAll(xset);
         }).count()));
     }
+    /**
+     * 执行用时：164 ms, 在所有 Java 提交中击败了5.04%的用户
+     * 内存消耗：44.7 MB, 在所有 Java 提交中击败了5.04%的用户
+     *
+     * 去掉stream，好像也没差？
+     * @param allowed
+     * @param words
+     * @return
+     */
+    public int countConsistentStringsV2(String allowed, String[] words) {
+        int count=0;
+        Set<String> allowset = new HashSet<>(Arrays.asList(allowed.split("")));
+        for (String word:words){
+            Set<String> xset  = new HashSet<>(Arrays.asList(word.split("")));
+            if (allowset.containsAll(xset)){
+                count++;
+            }
+        }
+        return count;
+    }
 }
