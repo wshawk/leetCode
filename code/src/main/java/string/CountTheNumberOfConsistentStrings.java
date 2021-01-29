@@ -100,4 +100,26 @@ public class CountTheNumberOfConsistentStrings {
         }
         return count;
     }
+
+    /**
+     * 执行用时：27 ms, 在所有 Java 提交中击败了21.91%的用户
+     * 内存消耗：40.1 MB, 在所有 Java 提交中击败了10.16%的用户
+     *
+     * 别人的题解。。。
+     * @param allowed
+     * @param words
+     * @return
+     */
+    public int countConsistentStringsByOtherPerson(String allowed, String[] words) {
+        int result=words.length;
+        for(int i=0;i<words.length;i++){
+            for(int j=0;j<words[i].length();j++){
+                String a=null;
+                if(!allowed.contains(a.valueOf(words[i].charAt(j)))){
+                    result--;break;
+                }
+            }
+        }
+        return result;
+    }
 }
