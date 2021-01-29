@@ -28,7 +28,22 @@ import java.util.Arrays;
  * @date 2021/1/29
  */
 public class DefangingAnIpAddress {
-    public static String defangIPaddr(String address) {
+    /**
+     * 执行用时：3 ms, 在所有 Java 提交中击败了19.28%的用户
+     * 内存消耗：36.6 MB, 在所有 Java 提交中击败了40.58%的用户
+     * @param address
+     * @return
+     */
+    public String defangIPaddrV1(String address) {
         return address.replaceAll("\\.", "[\\.]");
+    }
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：36.4 MB, 在所有 Java 提交中击败了74.17%的用户
+     * @param address
+     * @return
+     */
+    public String defangIPaddrV2(String address) {
+        return address.replace(".", "[.]");
     }
 }
