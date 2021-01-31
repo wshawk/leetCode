@@ -1,5 +1,9 @@
 package handlenumber;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author hawk
  * @Title: FairCandySwap
@@ -37,6 +41,25 @@ package handlenumber;
  */
 public class FairCandySwap {
     public int[] fairCandySwap(int[] A, int[] B) {
+        Map<Integer, Integer> aMap = new HashMap<>();
+        int sumA=0;
+        for (int i=0,len=A.length; i<len-1; i++){
+            sumA+=A[i];
+            aMap.put(i, A[i]);
+        }
+        int sumB=0;
+        Map<Integer, Integer> bMap = new HashMap<>();
+        for (int i=0,len=B.length; i<len-1; i++){
+            sumB+=B[i];
+            bMap.put(i, A[i]);
+        }
+
+        if (sumA == sumB){
+            // 取相等元素的值返回即可
+        }else{
+            int reduce = Math.abs(sumA - sumB);
+            // 找出A和B中的多个元素相加等于该差值，然后返回这些值
+        }
         return null;
     }
 }
