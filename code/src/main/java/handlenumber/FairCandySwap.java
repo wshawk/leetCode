@@ -40,6 +40,14 @@ import java.util.Map;
  * @since 2021/02/01 0:31
  */
 public class FairCandySwap {
+    /**
+     * 唔...
+     * 我还是先刷其他的吧，太菜了！
+     * TODO: 记得做这道题~
+     * @param A
+     * @param B
+     * @return
+     */
     public int[] fairCandySwap(int[] A, int[] B) {
         Map<Integer, Integer> aMap = new HashMap<>();
         int sumA=0;
