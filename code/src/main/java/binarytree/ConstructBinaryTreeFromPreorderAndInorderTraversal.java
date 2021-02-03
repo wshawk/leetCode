@@ -30,7 +30,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         int[] preorder = {3,9,20,15,7};
         int[] inorder = {9,3,15,20,7};
 
-        TreeNode t = buildTreeV1(preorder, inorder);
+        TreeNode t = buildTreeV2(preorder, inorder);
         System.out.println("==================");
     }
     /**
@@ -114,7 +114,46 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         return root;
     }
 
+    /**
+     * 利用Arrays.copyOf()方法简化buildTreeV1
+     * @param preorder
+     * @param inorder
+     * @return
+     */
     public static TreeNode buildTreeV2(int[] preorder, int[] inorder) {
-        return null;
+        if (preorder.length == 0) {
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[0]);
+        if (preorder.length == 2) {
+            boolean flag = true;
+            for (int i = 0; i < preorder.length; i++) {
+                if (preorder[i] != inorder[i]) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                root.right = new TreeNode(preorder[1]);
+            } else {
+                root.left = new TreeNode(preorder[1]);
+            }
+            return root;
+        } else if (preorder.length == 1) {
+            return root;
+        }
+        int[] leftChildInOrder = {};
+        int[] rightChildInOrder = {};
+        for (int i=0,len=inorder.length; i<len; i++){
+            if (inorder[i] == preorder[0]){
+                leftChildInOrder = Arrays.copyOfRange(inorder, 0, i);
+                rightChildInOrder = Arrays.copyOfRange(inorder, i+1, inorder.length);
+                break;
+            }
+        }
+        int[] leftChildPreOrder = Arrays.copyOfRange(preorder, 1, leftChildInOrder.length);
+        int[] rightChildPreOrder = Arrays.copyOfRange(preorder, leftChildInOrder.length+1, preorder.length);
+        root.left = buildTreeV2(leftChildPreOrder, leftChildInOrder);
+        root.right = buildTreeV2(rightChildPreOrder, rightChildInOrder);
+        return root;
     }
 }
