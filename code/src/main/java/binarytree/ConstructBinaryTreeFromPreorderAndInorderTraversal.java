@@ -30,7 +30,7 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         int[] preorder = {3,9,20,15,7};
         int[] inorder = {9,3,15,20,7};
 
-        TreeNode t = buildTree(preorder, inorder);
+        TreeNode t = buildTreeV1(preorder, inorder);
         System.out.println("==================");
     }
     /**
@@ -38,11 +38,12 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
      * 中序遍历：左根右
      * 执行用时：138 ms, 在所有 Java 提交中击败了5.27%的用户
      * 内存消耗：39.5 MB, 在所有 Java 提交中击败了8.72%的用户
+     * 惨不忍睹。。。。
      * @param preorder
      * @param inorder
      * @return
      */
-    public static TreeNode buildTree(int[] preorder, int[] inorder) {
+    public static TreeNode buildTreeV1(int[] preorder, int[] inorder) {
         /*
             1. 前序遍历的第一个元素就是根节点
             2. 在中序遍历时，根节点的左边就是左子树，右边是右子树
@@ -108,8 +109,12 @@ public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
         for(int i = 0; i < rightChildPreOrderArr.length; i ++){
             rightChildPreOrderArr[i] = rightChildPreOrder.get(i);
         }
-        root.left = buildTree(leftChildPreOrderArr, leftChildInOrderArr);
-        root.right = buildTree(rightChildPreOrderArr, rightChildInOrderArr);
+        root.left = buildTreeV1(leftChildPreOrderArr, leftChildInOrderArr);
+        root.right = buildTreeV1(rightChildPreOrderArr, rightChildInOrderArr);
         return root;
+    }
+
+    public static TreeNode buildTreeV2(int[] preorder, int[] inorder) {
+        return null;
     }
 }
