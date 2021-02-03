@@ -59,4 +59,15 @@ public class CountOfMatchesInTournament {
         return count;
     }
 
+    /**
+     * 共有n个队伍，一个冠军，需要淘汰n-1个 队伍。
+     * 每一场比赛淘汰一个队伍，因此进行了n-1场比赛。
+     * 所以共有n-1个配对。
+     * @param n 队伍数
+     * @return 配对数
+     */
+    public static int numberOfMatchesV2(int n) {
+        return n-1;
+    }
+
 }
