@@ -39,12 +39,23 @@ package handlenumber;
  * @date 2021/1/29
  */
 public class NumberOfStepsToReduceANumberToZero {
-    int count=0;
+    /**
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：35.3 MB, 在所有 Java 提交中击败了39.23%的用户
+     * @param num
+     * @return
+     */
     public int numberOfSteps (int num) {
-        if (num == 0){
-            return 0;
+        int count = 0;
+        while (num != 0){
+            // 奇数
+            if ((num&1) == 1){
+                num--;
+            }else{
+                num = num/2;
+            }
+            count++;
         }
-
-        return 0;
+        return count;
     }
 }
