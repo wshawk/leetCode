@@ -19,7 +19,25 @@ package handlenumber;
  * @date 2021/2/5
  */
 public class PrintTheNumberOfnDigitsFrom1ToTheMaximum {
+    /**
+     * 执行用时：1 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：46.8 MB, 在所有 Java 提交中击败了43.49%的用户
+     * @param n
+     * @return
+     */
     public int[] printNumbers(int n) {
-        return null;
+        if (n == 0){
+            return new int[0];
+        }
+        StringBuilder nine = new StringBuilder();
+        for (int i=0; i<n; i++){
+            nine.append("9");
+        }
+        int num = Integer.parseInt(nine.toString());
+        int[] res = new int[num];
+        for (int i=0; i<num; i++){
+            res[i]=i+1;
+        }
+        return res;
     }
 }
