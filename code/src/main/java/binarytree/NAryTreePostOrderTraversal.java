@@ -1,5 +1,6 @@
 package binarytree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,39 @@ import java.util.List;
  * @date 2021/2/19
  */
 public class NAryTreePostOrderTraversal {
+    /**
+     * 后续遍历：左右根
+     * 递归解法
+     * 执行用时：0 ms, 在所有 Java 提交中击败了100.00%的用户
+     * 内存消耗：39 MB, 在所有 Java 提交中击败了86.50%的用户
+     * @param root
+     * @return
+     */
     public List<Integer> postorder(MultiTreeNode root) {
-        return null;
+        List<Integer> list = new ArrayList<>();
+        cycle(root, list);
+        return list;
+    }
+    private void cycle(MultiTreeNode root, List<Integer> list){
+        if (root != null){
+            if (root.children != null && root.children.size() > 0){
+                for (int i=0, len=root.children.size(); i<len; i++){
+                    cycle(root.children.get(i), list);
+                }
+            }
+            list.add(root.val);
+        }
+    }
+
+
+    /**
+     * 迭代解法
+     * @param root
+     * @return
+     */
+    public List<Integer> postorderIterator(MultiTreeNode root) {
+        List<Integer> list = new ArrayList<>();
+
+        return list;
     }
 }
