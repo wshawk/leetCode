@@ -55,7 +55,6 @@ public class NAryTreePostOrderTraversal {
      */
     public List<Integer> postorderIterator(MultiTreeNode root) {
         List<Integer> list = new ArrayList<>();
-
         return list;
     }
 }
