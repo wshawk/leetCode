@@ -50,6 +50,7 @@ public class NAryTreePostOrderTraversal {
 
     /**
      * 迭代解法
+     * -----暂时没什么思路，，，，
      * @param root
      * @return
      */
