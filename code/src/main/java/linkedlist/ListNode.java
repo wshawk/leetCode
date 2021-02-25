@@ -20,7 +20,14 @@ public class ListNode {
         this.next = next;
     }
 
-    public ListNode generateListNode(int[] nums){
-        return null;
+    public static ListNode generateListNode(int[] nums) {
+        ListNode dummy = new ListNode(-1);
+        ListNode preNode = dummy;
+        for (int i = 0; i < nums.length; i ++) {
+            ListNode currNode = new ListNode(nums[i]);
+            preNode.next = currNode;
+            preNode = preNode.next;
+        }
+        return dummy.next;
     }
 }

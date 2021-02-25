@@ -45,10 +45,7 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        ListNode reversed = reverseLinkedList.reverseList(head);
+        ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
         System.out.println("------------");
     }
 
