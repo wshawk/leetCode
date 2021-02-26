@@ -19,34 +19,12 @@ import java.util.Queue;
  */
 public class ReverseLinkedList {
     public ListNode reverseList(ListNode head) {
-        // 先进后出，考虑使用栈来解决
-        if(head == null) return null;
-        Queue<Integer> queue = new LinkedList<>();
-        ListNode root = head;
-        while (head.val !=0){
-            queue.offer(head.val);
-           if (head.next != null){
-               head = head.next;
-           }else{
-               break;
-           }
-        }
-        ListNode reverse = new ListNode();
-        reverse.val = queue.poll();
-        while (!queue.isEmpty()) {
-            if (reverse.next == null) {
-                reverse.next = new ListNode(queue.poll());
-            } else {
-
-            }
-        }
-        return null;
+       return null;
     }
 
     public static void main(String[] args) {
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
         ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
-        System.out.println("------------");
     }
 
 
