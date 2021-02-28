@@ -24,6 +24,7 @@ public class ReverseLinkedList {
 
     public static void main(String[] args) {
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+
         ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
     }
 
