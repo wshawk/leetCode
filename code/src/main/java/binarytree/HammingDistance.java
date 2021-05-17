@@ -30,6 +30,13 @@ import java.util.BitSet;
  * @date 2021/5/14
  */
 public class HammingDistance {
+    /**
+     * 官方题解，自己没太看明白题目的意思
+     *
+     * @param x number
+     * @param y number
+     * @return hanmingDistance
+     */
     public int hammingDistance(int x, int y) {
      return Integer.bitCount(x^y);
     }
