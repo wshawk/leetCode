@@ -44,7 +44,7 @@ public class ReverseLinkedList {
             // 将当前节点的下一个节点设值为当前节点的上一个节点
             // 1 -> null
             curr.next = prev;
-            // 将当前节点设置为下一个节点的前置节点
+            // 将当前节点设置为下一个节点的前置节点，即挪动前置节点的指针
             // prev = 1
             prev = curr;
             // curr 为 2 -> 3 -> null
