@@ -20,6 +20,13 @@ import java.util.Stack;
  * @date 2021/2/24
  */
 public class ReverseLinkedList {
+    public static void main(String[] args) {
+        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+
+        ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
+        ListNode result = reverseList(head);
+        System.out.println("ppppppppppp");
+    }
     /**
      * 迭代解法
      *
@@ -60,16 +67,13 @@ public class ReverseLinkedList {
         return prev;
     }
 
-    public static void main(String[] args) {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
-
-        ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
-        ListNode result = reverseList(head);
-        System.out.println("ppppppppppp");
-    }
-    public static ListNode test(ListNode head){
-        ListNode node = head;
-        return null;
+    /**
+     * 递归解法
+     * @param head 需要反转的链表
+     * @return 反转后的链表
+     */
+    public static ListNode recursion(ListNode head){
+       return null;
     }
 
 }
