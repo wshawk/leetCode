@@ -20,6 +20,12 @@ import java.util.Stack;
  * @date 2021/2/24
  */
 public class ReverseLinkedList {
+    /**
+     * 迭代解法
+     *
+     * @param head 需要反转的链表
+     * @return 反转后的链表
+     */
     public static ListNode reverseList(ListNode head) {
         // ListNode cur = head;
         // ListNode pre = null;
