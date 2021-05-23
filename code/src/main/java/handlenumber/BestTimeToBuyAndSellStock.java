@@ -1,5 +1,9 @@
 package handlenumber;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author wsHawk
  * @Title: BestTimeToBuyAndSellStock
@@ -35,8 +39,48 @@ package handlenumber;
  * @since 2021/5/23 22:45
  */
 public class BestTimeToBuyAndSellStock {
-    public int maxProfit(int[] prices) {
+    public static void main(String[] args) {
+        int[] prices = {7,1,5,3,6,4};
+        System.out.println(maxProfit(prices));
+    }
 
-        return 0;
+    /**
+     * 暴力破解。。。
+     * @param prices
+     * @return
+     */
+    public static int maxProfit(int[] prices) {
+        long startTime = System.currentTimeMillis();
+        List<Integer> resultList = new ArrayList<>();
+        for (int i=0, len=prices.length; i<len; i++){
+            List<Integer> list = new ArrayList<>();
+            for (int j=i+1; j<len; j++){
+                list.add(prices[j] - prices[i]);
+            }
+            Collections.sort(list);
+            if (list.size() > 0){
+                resultList.add(list.get(list.size() - 1));
+            }
+        }
+        Collections.sort(resultList);
+        if (resultList.size() == 0 || resultList.get(resultList.size() - 1) < 0){
+            long endTime = System.currentTimeMillis();
+            System.out.println("程序运行时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
+            return 0;
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("程序运行时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
+        return resultList.get(resultList.size() - 1);
+    }
+
+    public static int maxProfitDP(int[] prices){
+        if(prices.length <= 1)
+            return 0;
+        int min = prices[0], max = 0;
+        for(int i = 1; i < prices.length; i++) {
+            max = Math.max(max, prices[i] - min);
+            min = Math.min(min, prices[i]);
+        }
+        return max;
     }
 }
