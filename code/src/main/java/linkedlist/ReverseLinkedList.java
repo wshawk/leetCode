@@ -1,15 +1,10 @@
 package linkedlist;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * @author hawk
  * @package linkedlist
- * @desc
+ * @desc 206. 反转链表
  *
  * 反转一个单链表。
  * 示例:
@@ -24,7 +19,7 @@ public class ReverseLinkedList {
         ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
 
         ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
-        ListNode result = reverseList(head);
+        ListNode result = recursion(head);
         System.out.println("ppppppppppp");
     }
     /**
@@ -52,7 +47,7 @@ public class ReverseLinkedList {
         while (curr != null) {
             // 假设获取到的链表是 1 -> 2 -> 3 -> null
             // curr 为 1 -> 2 -> 3 -> null
-            // 获取当前节点的下一个节点, 拿到 2 -> 3 -> null
+            // 获取当前节点的下一个节点,curr.next 拿到 2 -> 3 -> null
             ListNode next = curr.next;
             // 将当前节点的下一个节点设值为当前节点的上一个节点
             // 1 -> null
@@ -73,7 +68,16 @@ public class ReverseLinkedList {
      * @return 反转后的链表
      */
     public static ListNode recursion(ListNode head){
-       return null;
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode last = recursion(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
+
     }
 
 }
