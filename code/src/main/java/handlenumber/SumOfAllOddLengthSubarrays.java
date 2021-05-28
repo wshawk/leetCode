@@ -53,6 +53,15 @@ import java.text.DecimalFormat;
  */
 public class SumOfAllOddLengthSubarrays {
     public int sumOddLengthSubarrays(int[] arr) {
+        int n = 0;
+        if ((arr.length & 1) == 1){
+            n = arr.length;
+        }else{
+            n = arr.length - 1;
+        }
+        for (int i = 0; i < n; i = i + 2){
+
+        }
         return 0;
     }
 }
