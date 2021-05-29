@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
  * @author hawk
  * @package handlenumber
  * @desc 1588. 所有奇数长度子数组的和
+ * TODO: 待解决
  * 给你一个正整数数组arr，请你计算所有可能的奇数长度子数组的和。
  *
  * 子数组 定义为原数组中的一个连续子序列。
@@ -53,14 +54,20 @@ import java.text.DecimalFormat;
  */
 public class SumOfAllOddLengthSubarrays {
     public int sumOddLengthSubarrays(int[] arr) {
-        int n = 0;
-        if ((arr.length & 1) == 1){
-            n = arr.length;
-        }else{
-            n = arr.length - 1;
+        int n = (arr.length & 1) == 1 ? arr.length : arr.length - 1;
+        for (int i = 1; i < n; i = i + 2){
         }
-        for (int i = 0; i < n; i = i + 2){
-
+        return 0;
+    }
+    public int getSum(int[] arr, int length){
+        if (length < 1){
+            return 0;
+        }
+        if (length > arr.length){
+            return 0;
+        }
+        for (int i=length-1; i>0; i--){
+            System.out.println(arr[i]);
         }
         return 0;
     }
