@@ -1,5 +1,7 @@
-package binarytree;
+package binarytree.easy;
 
+import binarytree.TreeNode;
+import binarytree.TreeNodeUtils;
 import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import java.awt.*;
@@ -15,8 +17,7 @@ import java.util.stream.Collectors;
 /**
  * @author hawk
  * @package binarytree
- * @desc
- * 572. 另一个树的子树
+ * @desc 572. 另一个树的子树
  * 给定两个非空二叉树 s 和 t，检验s 中是否包含和 t 具有相同结构和节点值的子树。s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。
  *
  * 示例 1:

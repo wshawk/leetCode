@@ -1,4 +1,6 @@
-package binarytree;
+package binarytree.easy;
+
+import binarytree.TreeNode;
 
 import java.time.temporal.Temporal;
 

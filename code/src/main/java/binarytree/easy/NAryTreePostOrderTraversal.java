@@ -1,4 +1,6 @@
-package binarytree;
+package binarytree.easy;
+
+import binarytree.MultiTreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

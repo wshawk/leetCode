@@ -1,9 +1,12 @@
-package binarytree;
+package binarytree.easy;
+
+import binarytree.TreeNode;
+import binarytree.TreeNodeUtils;
 
 /**
  * @author hawk
  * @package binarytree
- * @desc
+ * @desc 226. 翻转二叉树
  * 输入：
  *      4
  *    /   \

@@ -1,5 +1,7 @@
-package binarytree;
+package binarytree.easy;
 
+import binarytree.TreeNode;
+import binarytree.TreeNodeUtils;
 import sun.util.resources.cldr.wae.LocaleNames_wae;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.Queue;
 /**
  * @author hawk
  * @package binarytree
- * @desc
+ * @desc 872. 叶子相似的树
  * 请考虑一棵二叉树上所有的叶子，这些叶子的值按从左到右的顺序排列形成一个叶值序列 。
  *               3
  *            /     \

@@ -1,15 +1,18 @@
-package binarytree;
+package binarytree.easy;
+
+import binarytree.TreeNode;
 
 /**
  * @author hawk
  * @package binarytree
- * @desc 判断两棵树是否相同
+ * @desc 100. 相同的树
+ * 判断两棵树是否相同
  *
  * 给定两个二叉树，编写一个函数来检验它们是否相同。
  *
  * 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
  *
- * 示例 1:
+ * 示例1:
  *
  * 输入:       1         1
  *           / \       / \
@@ -27,7 +30,7 @@ package binarytree;
  *         [1,2],     [1,null,2]
  *
  * 输出: false
- * 示例 3:
+ * 示例3:
  *
  * 输入:       1         1
  *           / \       / \

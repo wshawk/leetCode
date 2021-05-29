@@ -1,4 +1,4 @@
-package binarytree;
+package binarytree.middle;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

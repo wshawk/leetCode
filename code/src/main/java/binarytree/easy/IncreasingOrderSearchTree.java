@@ -1,4 +1,7 @@
-package binarytree;
+package binarytree.easy;
+
+import binarytree.TreeNode;
+import binarytree.TreeNodeUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -46,7 +49,7 @@ import java.util.Queue;
  *
  * 提示：
  *
- * 给定树中的结点数介于 1 和 100 之间。
+ * 给定树中的结点数介于 1 和100 之间。
  * 每个结点都有一个从 0 到 1000 范围内的唯一整数值。
  *
  * @date 2021/1/28

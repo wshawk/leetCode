@@ -1,5 +1,8 @@
-package binarytree;
+package binarytree.middle;
 
+
+import binarytree.easy.MergeTwoBinaryTrees;
+import binarytree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
