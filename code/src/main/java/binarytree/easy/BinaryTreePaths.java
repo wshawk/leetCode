@@ -1,5 +1,10 @@
 package binarytree.easy;
 
+import binarytree.TreeNode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author hawk
  * @package binarytree
@@ -28,4 +33,52 @@ package binarytree.easy;
  * @date 2021/5/29
  */
 public class BinaryTreePaths {
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        TreeNode left = new TreeNode(2);
+        left.right = new TreeNode(5);
+
+        root.left = left;
+        root.right = new TreeNode(3);
+
+        // binaryTreePaths(root).forEach(System.out::println);
+        binaryTreePaths1(root);
+    }
+    /**
+     * 返回二叉树的所有路径
+     * 思路：前序遍历
+     * 中 -> 左 -> 右
+     * @param root 二叉树
+     * @return 所有路径
+     */
+    public static List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        List<String> left = new ArrayList<>();
+        if (root.left != null){
+            left = binaryTreePaths(root.left);
+        }
+        List<String> right = new ArrayList<>();
+        if (root.right != null){
+            right = binaryTreePaths(root.right);
+        }
+        if (root.left != null){
+            res.add(root.val + "->" +root.left.val);
+        }
+        if (root.right != null){
+            res.add(root.val + "->" +root.right.val);
+        }
+        res.addAll(left);
+        res.addAll(right);
+        return res;
+    }
+    // TODO: 记得再次尝试~
+    public static void binaryTreePaths1(TreeNode root) {
+       if (root == null) return;
+
+    }
+    public static void getString(TreeNode node, String initStr){
+        if (node != null){
+            initStr = "->" + node.val;
+        }
+    }
 }
