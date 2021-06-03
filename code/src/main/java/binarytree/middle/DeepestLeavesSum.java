@@ -36,6 +36,10 @@ public class DeepestLeavesSum {
     /**
      * 执行用时：6 ms, 在所有 Java 提交中击败了24.94%的用户
      * 内存消耗：39.4 MB, 在所有 Java 提交中击败了85.05%的用户
+     *
+     * 思路：
+     * 按顺序将每层的节点数据之和添加到list中
+     * 取list的最后一个元素即可
      * @param root
      * @return
      */
@@ -59,6 +63,9 @@ public class DeepestLeavesSum {
     /**
      * 执行用时：5 ms, 在所有 Java 提交中击败了49.87%的用户
      * 内存消耗：39.4 MB, 在所有 Java 提交中击败了81.53%的用户
+     *
+     * 相比较上一个方法，不用把每一层的结果放到list中
+     * 直接判断是不是最后一层，如果是最后一层就返回该层数据之和
      * @param root
      * @return
      */
@@ -73,10 +80,11 @@ public class DeepestLeavesSum {
                 if (n.left != null) queue.offer(n.left);
                 if (n.right != null) queue.offer(n.right);
             }
+            // 判断是否是最后一层
             if (queue.size() == 0){
                 return sum;
             }
         }
-        return 0;
+        throw null;
     }
 }
