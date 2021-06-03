@@ -47,7 +47,7 @@ public class KthSmallestElementInABst {
      * @param k
      * @return
      */
-    public int kthSmallest(TreeNode root, int k) {
+    public int kthSmallestBFS(TreeNode root, int k) {
         List<Integer> list = new ArrayList<>();
         Queue<TreeNode> queue = new LinkedList<TreeNode>(){{
             offer(root);
@@ -60,5 +60,31 @@ public class KthSmallestElementInABst {
         }
         Collections.sort(list);
         return list.get(k - 1);
+    }
+
+    /**
+     * 题目是二叉搜索树，
+     * 即：右子节点的值 > 根节点的值 > 左子树节点的值
+     * 中序遍历：左 -> 中 -> 右
+     * 刚好是排好顺序的列表
+     *
+     * 执行用时：1 ms, 在所有 Java 提交中击败了48.83%的用户
+     * 内存消耗：38.7 MB, 在所有 Java 提交中击败了24.72%的用户
+     *
+     * @param root
+     * @param k
+     * @return
+     */
+    public int kthSmallestMiddleOrder(TreeNode root, int k) {
+        List<Integer> list = new ArrayList<>();
+        middleOrder(root, list, k);
+        return list.get(k - 1);
+    }
+    public void middleOrder(TreeNode root, List<Integer> list,  int k){
+        if (root == null) return;
+        if (list.size() == k) return;
+        middleOrder(root.left, list, k);
+        list.add(root.val);
+        middleOrder(root.right, list, k);
     }
 }
