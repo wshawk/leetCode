@@ -1,5 +1,7 @@
 package handlenumber.middle;
 
+import java.util.BitSet;
+
 /**
  * @author hawk
  * @package handlenumber.middle
