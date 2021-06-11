@@ -1,6 +1,7 @@
 package binarytree.easy;
 
 import binarytree.TreeNode;
+import binarytree.TreeNodeUtils;
 
 /**
  * @author hawk
@@ -26,17 +27,50 @@ import binarytree.TreeNode;
  * 链接：https://leetcode-cn.com/problems/sum-of-left-leaves
  */
 public class SumOfLeftLeaves {
+    public static void main(String[] args) {
+        Integer[] nums = {3,9,20,null,null,15,7};
+        TreeNode root = TreeNodeUtils.generateBinaryTree(nums);
+        System.out.println(sumOfLeftLeavesRecursion(root));
+    }
+
+
+    /**
+     * 输出二叉树的左叶子节点
+     * @param root
+     */
+    public static void leftLeaves(TreeNode root){
+        if (root == null){
+            return;
+        }
+        if (root.left != null && root.left.left == null && root.left.right == null){
+            System.out.println("left leaf: " + root.left.val);
+        }
+        leftLeaves(root.left);
+        leftLeaves(root.right);
+    }
     /**
      * 递归
      * @param root
      * @return
      */
-    public int sumOfLeftLeaves(TreeNode root) {
-        int leafsValue = 0;
-        sumOfLeftLeavesRecursion(root, leafsValue);
-        return leafsValue;
+    public static int sumOfLeftLeavesRecursion(TreeNode root) {
+        int leafValue = 0;
+        if (root == null) {
+            return leafValue;
+        }
+        if (root.left != null && root.left.left == null && root.left.right == null){
+                leafValue+=root.left.val;
+        }
+        return leafValue + sumOfLeftLeavesRecursion(root.left) + sumOfLeftLeavesRecursion(root.right);
     }
 
-    private void sumOfLeftLeavesRecursion(TreeNode root, int leafsValue) {
+    /**
+     * 迭代
+     * @param root
+     * @return
+     */
+    public static int sumOfLeftLeavesIterator(TreeNode root) {
+        int leafValue = 0;
+        return leafValue;
     }
 }
