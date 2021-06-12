@@ -63,14 +63,4 @@ public class SumOfLeftLeaves {
         }
         return leafValue + sumOfLeftLeavesRecursion(root.left) + sumOfLeftLeavesRecursion(root.right);
     }
-
-    /**
-     * 迭代
-     * @param root
-     * @return
-     */
-    public static int sumOfLeftLeavesIterator(TreeNode root) {
-        int leafValue = 0;
-        return leafValue;
-    }
 }
