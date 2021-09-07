@@ -30,4 +30,9 @@ public class ListNode {
         }
         return dummy.next;
     }
+
+    @Override
+    public String toString() {
+        return ""+ val +" => " + next == null ? "null" : String.valueOf(next);
+    }
 }
