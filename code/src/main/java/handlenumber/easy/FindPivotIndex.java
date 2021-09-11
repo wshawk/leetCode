@@ -1,5 +1,7 @@
 package handlenumber.easy;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.util.Arrays;
 
 /**
@@ -71,6 +73,26 @@ public class FindPivotIndex {
            if (sumLeft == sumRight){
                return i;
            }
+        }
+        return -1;
+    }
+
+    /**
+     * 思路：
+     *      计算出数组之和 sum
+     *      中心索引左边元素之和 * 2 + 中心索引元素 == sum
+     * @param nums 数组
+     * @return 该数组的中心索引
+     */
+    public int pivotIndex(int[] nums){
+        int sumLeft = 0;
+        int sum = Arrays.stream(nums).sum();
+
+        for (int i=0; i<nums.length; i++){
+            if (sumLeft*2 + nums[i] == sum){
+                return i;
+            }
+            sumLeft+=nums[i];
         }
         return -1;
     }
