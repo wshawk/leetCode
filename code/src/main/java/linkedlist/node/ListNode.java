@@ -1,6 +1,4 @@
-package linkedlist;
-
-import java.util.List;
+package linkedlist.node;
 
 /**
  * @author hawk
@@ -9,8 +7,8 @@ import java.util.List;
  * @date 2021/1/29
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
     ListNode(){}
     ListNode(int val){
         this.val = val;

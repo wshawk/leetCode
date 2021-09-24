@@ -1,6 +1,8 @@
 package linkedlist;
 
 
+import linkedlist.node.ListNode;
+
 /**
  * @author hawk
  * @package linkedlist
