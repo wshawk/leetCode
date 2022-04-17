@@ -44,6 +44,33 @@ package string;
 public class ModifyString {
     private static final char[] LETTER = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'w', 's', 'x', 'y', 'z', 'r', 't', 'u', 'v'};
 
+    public static void main(String[] args) {
+        System.out.println(clumsy(10));
+    }
+
+    public static int clumsy(int n) {
+        // * / + -
+        int ans = n;
+        int flag = 0;
+        while ( n != 0){
+            if (flag % 4 == 0){
+                ans = ans * (n - 1);
+            }else if (flag % 4 == 1){
+                ans = ans / (n-1);
+            }else if (flag % 4 == 2){
+                ans = ans + (n-1);
+            }else{
+                ans = ans -(n-1);
+            }
+            if (flag == 3){
+                flag = -1;
+            }
+            flag++;
+            n--;
+        }
+        return ans;
+    }
+
     public String modifyString(String s) {
         char[] chars = s.toCharArray();
         for (int i=0; i<chars.length; i++){

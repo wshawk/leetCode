@@ -2,6 +2,9 @@ package linkedlist;
 
 import linkedlist.node.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author hawk
  * @package linkedlist
@@ -23,6 +26,21 @@ public class LinkedListCycle {
             }
             fast = fast.next.next;
             slow = slow.next;
+        }
+        return false;
+    }
+
+
+    public boolean hasCycleSet(ListNode head) {
+        if (head == null || head.next == null){
+            return false;
+        }
+        Set<ListNode> set = new HashSet<>();
+        while (head != null){
+            if (!set.add(head)){
+                return true;
+            }
+            head = head.next;
         }
         return false;
     }
