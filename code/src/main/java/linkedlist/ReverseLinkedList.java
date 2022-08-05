@@ -3,6 +3,13 @@ package linkedlist;
 
 import linkedlist.node.ListNode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 /**
  * @author hawk
  * @package linkedlist
@@ -18,11 +25,13 @@ import linkedlist.node.ListNode;
  */
 public class ReverseLinkedList {
     public static void main(String[] args) {
-        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+        // ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+        //
+        // ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
+        // ListNode result = recursion(head);
+        // System.out.println("ppppppppppp");
+        // System.out.println(UUID.randomUUID().toString().replace("-", ""));
 
-        ListNode head = ListNode.generateListNode(new int[]{1, 2, 3});
-        ListNode result = recursion(head);
-        System.out.println("ppppppppppp");
     }
     /**
      * 迭代解法
