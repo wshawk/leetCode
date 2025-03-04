@@ -40,6 +40,13 @@ import java.util.Map;
  * @date 2021/10/22
  */
 public class MajorityElementII {
+    public static void main(String[] args) {
+        System.out.println(new Object());
+        System.out.println(new Object());
+        System.out.println(new Object());
+        System.out.println(new Object());
+        System.out.println(new Object());
+    }
     public List<Integer> majorityElement(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int i : nums){
