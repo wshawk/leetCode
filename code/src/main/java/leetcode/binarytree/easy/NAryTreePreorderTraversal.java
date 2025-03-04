@@ -3,6 +3,8 @@ package leetcode.binarytree.easy;
 import leetcode.binarytree.MultiTreeNode;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -75,11 +77,21 @@ public class NAryTreePreorderTraversal {
     /**
      * 迭代解法
      * TODO: 待解决
+     * 前序遍历
+     * 根 -> 左 -> 右
      * @param root
      * @return
      */
     public List<Integer> preorderIteration(MultiTreeNode root) {
         List<Integer> list = new ArrayList<>();
+        Deque<MultiTreeNode> stack = new LinkedList<>();
+        while (root != null || !stack.isEmpty()){
+            while (root != null){
+                list.add(root.val);
+                List<MultiTreeNode> children = root.children;
+
+            }
+        }
         return list;
     }
 
