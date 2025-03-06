@@ -1,4 +1,4 @@
-package handlenumber.middle;
+package leetcode.handlenumber.middle;
 
 import java.util.Stack;
 

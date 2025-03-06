@@ -1,4 +1,4 @@
-package handlenumber.easy;
+package leetcode.handlenumber.easy;
 
 import java.util.ArrayList;
 import java.util.List;
