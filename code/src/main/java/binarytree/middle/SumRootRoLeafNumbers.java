@@ -1,8 +1,8 @@
 package binarytree.middle;
 
-import binarytree.TreeNode;
-import binarytree.TreeNodeUtils;
 
+import leetcode.binarytree.TreeNode;
+import leetcode.binarytree.TreeNodeUtils;
 
 /**
  * @author hawk
